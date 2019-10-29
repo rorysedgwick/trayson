@@ -1,4 +1,4 @@
-from geopy.distance import geodesic
+from geopy.distance import distance
 import networkx as nx
 import osmread
 import numpy as np
@@ -100,7 +100,7 @@ def construct_graph(nodes, ways):
 
 def calc_length(g):
     for edge in g.edges():
-        g.edges[edge]['length'] = geodesic((g.nodes[edge[0]]['lat'],g.nodes[edge[0]]['lon']), (g.nodes[edge[1]]['lat'],g.nodes[edge[1]]['lon'])).miles
+        g.edges[edge]['length'] = distance((g.nodes[edge[0]]['lat'],g.nodes[edge[0]]['lon']), (g.nodes[edge[1]]['lat'],g.nodes[edge[1]]['lon'])).miles
         if 'length' in g.edges[edge]['tags']:
             del g.edges[edge]['tags']['length'] # delete because provided property can be confusing
     return g
