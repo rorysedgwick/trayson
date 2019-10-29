@@ -1,0 +1,17 @@
+*.csv
+**/__pycache__/*
+*.gz
+venv/*
+**/node_modules/*
+static/bundle.js
+.DS_Store
+.cache/
+.local/
+.ipynb_checkpoints/
+.ipython/
+.jupyter/
+
+julia-0.6/
+
+*.log
+Dockerfile
