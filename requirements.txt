@@ -1,7 +1,7 @@
-flask
-networkx
-numpy
-osmread
-pandas
-geopy
-requests
+flask==1.1.1
+geopy==1.12.0
+networkx==2.0
+numpy==1.17.3
+osmread==0.2
+pandas==0.25.2
+requests==2.22.0
