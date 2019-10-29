@@ -9,13 +9,15 @@ COPY package*.json /app/
 RUN npm install --silent
 
 # Transfer application files
-COPY . /app/
+COPY src/ /app/src
+COPY static/ /app/static
+COPY webpack.config.js .babelrc /app/
 
 # Build web UI
 RUN npm run build
 
 # Stage 1
-FROM python:3.8
+FROM python:3.6
 
 WORKDIR /usr/src/app
 
@@ -44,6 +46,7 @@ COPY src/ /usr/src/app/src/
 
 # Copy web UI from stage 0
 COPY --from=node /app/static /usr/src/app/static
+RUN mkdir /usr/src/app/tmp
 
 # Configure server
 EXPOSE 5000
